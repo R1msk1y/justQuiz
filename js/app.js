@@ -35,7 +35,34 @@ const questions = [
 console.log(questions);
 
 
+let score = 0;
+let qIndex = 0;
+
+
 
 
 const headerOfBlock = document.querySelector(`#header`);
+
+function renderQ () {
+
+
+    headerOfBlock.innerHTML = "";
+
+    let templateOftitle = ` <h2 class="quiz__header-title" id="titleOfQuiz">%title%</h2>`;
+
+    let title = templateOftitle.replace(`%title%`, questions[qIndex]["question"]);
+
+    headerOfBlock.innerHTML = title;
+
+
+
+
+
+
+
+
+
+};
+
+renderQ();
 
