@@ -8,34 +8,44 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+   <div class="page">
     <div class="quiz">
 
         <div class="quiz__header">
             <h2 class="quiz__header-title" id="titleOfQuiz">Место для вопроса</h2>
         </div>
 
-       <ul class="quiz__list" id="bodyOfQuiz">
+        <div class="bodyOfQuiz">
 
 
-        <li>
-            <label>
-                <input type="radio" class="answer" name="answer" />
-                <span>Ответ пользователя</span>
-            </label>
-        </li>
-        <li>
-            <label>
-                <input type="radio" class="answer" name="answer" />
-                <span>Ответ пользователя</span>
-            </label>
-        </li>
+            <div class="answer">
+                <input class="input" id="quiz-input" type="radio">
+                <label class="label" for="quiz-input">Варианты ответов</label>
+             </div>
 
-       </ul>
+            <div class="answer">
 
-       <button class="btn" id="btnOfBlock">Ответить</button>
+                <input id="quiz-input" type="radio">
+                <label class="label" for="quiz-input">Варианты ответов</label>
+             </div>
 
-    </div>
 
+            </div> <!--bodyOfQuiz-->
+
+            <div class="btn-case">
+
+
+                <a class="btn" id="btnOfBlock">Ответить</a>
+
+
+            </div>   <!--btn-case-->
+
+
+
+    </div>  <!--quiz-->
+
+
+</div>
 <script src="js/app.js"></script>
 </body>
 </html>
