@@ -20,7 +20,7 @@ const questions = [
     {
         question: "С какого значения начинаются индексы у массивов в JS?",
         answers: ["С нуля", "С единицы", "С двух", "С минус одного"],
-        aim: 2,
+        aim: 1,
     },
 
     {
@@ -32,7 +32,8 @@ const questions = [
 
 ];
 
-console.log(questions);
+
+
 
 
 let score = 0;
@@ -107,11 +108,15 @@ function checkAnswers (){
 
 
         let parceForCheckedInput = checkedInput.value = parseInt(checkedInput.value);
+        console.log(parceForCheckedInput);
+
 
         if(parceForCheckedInput === questions[qIndex][`aim`]){
 
 
-            score = score++;
+
+
+            score = score +1;
 
 
         }
@@ -123,7 +128,13 @@ function checkAnswers (){
             renderQ();
             renderA();
 
+
+
         }else{
+
+            console.log(score);
+
+
 
             resultsRender();
 
