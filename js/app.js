@@ -2,7 +2,7 @@ const questions = [
 
     {
         question: "Метод в JS, для поиска родителя элемента?",
-        answers: ["parceInt", "map", "push", "closest"],
+        answers: ["parseInt", "map", "push", "closest"],
         aim: 4,
     },
 
@@ -43,6 +43,7 @@ let qIndex = 0;
 
 const headerOfBlock = document.querySelector(`#header`);
 const bodyOfBlock = document.querySelector(`#bodyOfQ`);
+const btnOfBlock = document.querySelector(`#btnOfBlock`);
 
 function renderQ () {
 
@@ -65,16 +66,25 @@ function renderA () {
 
     bodyOfBlock.innerHTML = ``;
 
+
+    let valueForInput = 1;
+
     for(item of questions[qIndex][`answers`]){
 
         let templateOfAnswers = `<div class="answer">
-        <input class="input" id="quiz-input" type="radio" name="radio-quiz">
+        <input value = "%value%" class="input" id="quiz-input" type="radio" name="radio-quiz">
         <label class="label" for="quiz-input">%forAnswer%</label>
      </div>`;
 
      let answerWithOutValue = templateOfAnswers.replace(`%forAnswer%`, item);
 
-     bodyOfBlock.innerHTML += answerWithOutValue;
+    let answerPlusValue =  answerWithOutValue.replace("%value%", valueForInput);
+
+     bodyOfBlock.innerHTML += answerPlusValue;
+
+     valueForInput++;
+
+
 
 
 
@@ -85,4 +95,64 @@ function renderA () {
 };
 
 renderA();
+
+
+
+function checkAnswers (){
+
+    let checkedInput = bodyOfBlock.querySelector(`input:checked`);
+
+    if(checkedInput){
+
+
+
+        let parceForCheckedInput = checkedInput.value = parseInt(checkedInput.value);
+
+        if(parceForCheckedInput === questions[qIndex][`aim`]){
+
+
+            score = score++;
+
+
+        }
+
+
+        if(qIndex !== questions.length - 1) {
+
+
+            qIndex++;
+            renderQ();
+            renderA();
+
+
+
+
+
+
+
+        }else{
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+};
+
+
+btnOfBlock.addEventListener(`click`, checkAnswers);
 
