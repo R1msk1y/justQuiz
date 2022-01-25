@@ -119,40 +119,90 @@ function checkAnswers (){
 
         if(qIndex !== questions.length - 1) {
 
-
             qIndex++;
             renderQ();
             renderA();
 
-
-
-
-
-
-
         }else{
 
-
-
-
+            resultsRender();
 
 
         }
 
-
-
-
-
-
-
     }
-
-
-
-
 
 };
 
 
 btnOfBlock.addEventListener(`click`, checkAnswers);
+
+
+function clearPager (){
+
+    bodyOfBlock.innerHTML = ``;
+    headerOfBlock.innerHTML = ``;
+
+
+};
+
+
+
+function resultsRender (){
+
+    clearPager();
+
+    const reultsTemplate = `
+    <h2 class="title">%title%</h2>
+    <h3 class="message">%message%</h3>
+    <p class="result">%result%</p>`;
+
+
+    let title;
+    let message;
+
+    if(score === questions.length){
+
+        title = `Превосходно`;
+        message = `Вы ответили правильно на все вопросы!`;
+
+    } else if ((score * 100) / questions.length >= 50){
+
+
+        title = `Хороший результат`;
+        message = `Больше чем в половие случаев вы отвечали правильно`;
+
+
+
+
+    } else {
+
+        title = `Можно лучше`;
+        message = `Пока у вас меньше половины правильных ответов`;
+
+    }
+
+    let result = `${score} из ${questions.length}`;
+
+
+    const finalMes = reultsTemplate
+    .replace(`%title%`, title)
+    .replace(`%message%`, message)
+    .replace(`%result%`, result);
+
+    headerOfBlock.innerHTML = finalMes;
+
+
+
+    btnOfBlock.innerText = `Попробовать еще раз`;
+    btnOfBlock.onclick = function(){
+        history.go();
+    };
+
+
+
+
+
+
+}
 
