@@ -42,6 +42,7 @@ let qIndex = 0;
 
 
 const headerOfBlock = document.querySelector(`#header`);
+const bodyOfBlock = document.querySelector(`#bodyOfQ`);
 
 function renderQ () {
 
@@ -55,14 +56,33 @@ function renderQ () {
     headerOfBlock.innerHTML = title;
 
 
+};
+
+renderQ();
+
+
+function renderA () {
+
+    bodyOfBlock.innerHTML = ``;
+
+    for(item of questions[qIndex][`answers`]){
+
+        let templateOfAnswers = `<div class="answer">
+        <input class="input" id="quiz-input" type="radio" name="radio-quiz">
+        <label class="label" for="quiz-input">%forAnswer%</label>
+     </div>`;
+
+     let answerWithOutValue = templateOfAnswers.replace(`%forAnswer%`, item);
+
+     bodyOfBlock.innerHTML += answerWithOutValue;
 
 
 
-
+    }
 
 
 
 };
 
-renderQ();
+renderA();
 
